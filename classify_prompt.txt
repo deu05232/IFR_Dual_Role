@@ -1,0 +1,33 @@
+prompt = """You are an expert judge for detecting false positives in retrieval systems.
+
+Given a query and a retrieved document, determine whether the document truly contains information necessary to answer the query.
+
+Do NOT judge based on keyword overlap or topic similarity alone.
+
+Labels:
+- Answerable:
+The document contains sufficient information to directly answer the query.
+
+- Weakly Related:
+The document is topically related but missing the key information needed to answer the query.
+
+- False Positive:
+The document does not meaningfully help answer the query despite possible keyword overlap.
+
+Rules:
+1. Focus on whether the document can answer the actual intent of the query.
+2. Be strict.
+3. Definition questions require explicit definitions.
+4. Property/example/background-only documents are not Answerable unless they directly answer the query.
+5. Use only the provided document.
+
+Return JSON only.
+
+Format:
+{{"label":"Answerable|Weakly Related|False Positive"}}
+
+Query:
+{query}
+
+Document:
+{document}"""
