@@ -1,4 +1,4 @@
-# Tevatron (for Promptriever)
+# Tevatron (for Promptriever & Ours)
 
 This repository is a modified version of the Promptriever fork of Tevatron, with additional support for multi-positive training and improved batch construction strategies.
 

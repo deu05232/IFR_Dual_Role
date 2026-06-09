@@ -46,6 +46,8 @@ To train on the Instruction-Augmented MSMARCO dataset:
 bash train.sh
 ```
 
+To preserve anonymity during the review process, we withhold the Hugging Face dataset link. The dataset will be publicly released upon acceptance.
+
 ### FollowTable
 
 To train on the FollowTable dataset:
