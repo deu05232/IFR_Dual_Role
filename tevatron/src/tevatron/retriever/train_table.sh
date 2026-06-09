@@ -1,0 +1,168 @@
+
+# Repllama
+nohup bash -c 'deepspeed --include localhost:"0,1" --master_port "60001" train_multi_with_dev.py \
+  --deepspeed deepspeed/ds_zero3_config.json \
+  --output_dir "repllama-llama2-7B-followtable" \
+  --model_name_or_path meta-llama/Llama-2-7b-hf \
+  --lora \
+  --lora_r 32 \
+  --lora_target_modules q_proj,k_proj,v_proj,o_proj,down_proj,up_proj,gate_proj \
+  --dataset_name "deu05232/followtable_WQT_train_only_q" \
+  --query_prefix "query: " \
+  --passage_prefix "passage: " \
+  --bf16 \
+  --pooling eos \
+  --append_eos_token \
+  --normalize \
+  --temperature 0.01 \
+  --per_device_train_batch_size 16 \
+  --gradient_checkpointing \
+  --train_group_size 16 \
+  --learning_rate 1e-4 \
+  --query_max_len 304 \
+  --passage_max_len 512 \
+  --logging_steps 10 \
+  --overwrite_output_dir \
+  --seed 42 \
+  --save_total_limit 2 \
+  --data_seed 42 \
+  --num_positives 1 \
+  --gradient_accumulation_steps 4 \
+  --dataset_cache_dir /workspace/cache \
+  --num_train_epochs 100 \
+  --eval_strategy epoch \
+  --save_strategy epoch \
+  --load_best_model_at_end \
+  --metric_for_best_model eval_ndcg@10_q \
+  --greater_is_better true \
+  --dev_dataset_path deu05232/followtable_WQT_dev \
+  --dev_dataset_split dev \
+  --dont_shuffle \
+  --negatives_first_n 3' > logs/train.log 2>&1 &
+  
+
+# Promptriever
+nohup bash -c 'deepspeed --include localhost:"0,1" --master_port "60001" train_multi_with_dev.py \
+  --deepspeed deepspeed/ds_zero3_config.json \
+  --output_dir "promptriever-llama2-7B-followtable" \
+  --model_name_or_path meta-llama/Llama-2-7b-hf \
+  --lora \
+  --lora_r 32 \
+  --lora_target_modules q_proj,k_proj,v_proj,o_proj,down_proj,up_proj,gate_proj \
+  --dataset_name "deu05232/followtable_WQT_train" \
+  --query_prefix "query: " \
+  --passage_prefix "passage: " \
+  --bf16 \
+  --pooling eos \
+  --append_eos_token \
+  --normalize \
+  --temperature 0.01 \
+  --per_device_train_batch_size 16 \
+  --gradient_checkpointing \
+  --train_group_size 16 \
+  --learning_rate 1e-4 \
+  --query_max_len 304 \
+  --passage_max_len 512 \
+  --logging_steps 10 \
+  --overwrite_output_dir \
+  --seed 42 \
+  --save_total_limit 2 \
+  --data_seed 42 \
+  --num_positives 1 \
+  --gradient_accumulation_steps 4 \
+  --dataset_cache_dir /workspace/cache \
+  --num_train_epochs 100 \
+  --eval_strategy epoch \
+  --save_strategy epoch \
+  --load_best_model_at_end \
+  --metric_for_best_model eval_ndcg@10_q_inst \
+  --greater_is_better true \
+  --dev_dataset_path deu05232/followtable_WQT_dev \
+  --dev_dataset_split dev \
+  --dont_shuffle \
+  --negatives_first_n 3' > logs/train.log 2>&1 &
+  
+
+# JointLH
+nohup bash -c 'deepspeed --include localhost:"0,1" --master_port "60001" train_multi_with_dev.py \
+  --deepspeed deepspeed/ds_zero3_config.json \
+  --output_dir "promptriever-llama2-7B-followtable" \
+  --model_name_or_path meta-llama/Llama-2-7b-hf \
+  --lora \
+  --lora_r 32 \
+  --lora_target_modules q_proj,k_proj,v_proj,o_proj,down_proj,up_proj,gate_proj \
+  --dataset_name "deu05232/followtable_WQT_train" \
+  --query_prefix "query: " \
+  --passage_prefix "passage: " \
+  --bf16 \
+  --pooling eos \
+  --append_eos_token \
+  --normalize \
+  --temperature 0.01 \
+  --per_device_train_batch_size 16 \
+  --gradient_checkpointing \
+  --train_group_size 16 \
+  --learning_rate 1e-4 \
+  --query_max_len 304 \
+  --passage_max_len 512 \
+  --logging_steps 10 \
+  --overwrite_output_dir \
+  --seed 42 \
+  --save_total_limit 2 \
+  --data_seed 42 \
+  --num_positives 1 \
+  --gradient_accumulation_steps 4 \
+  --dataset_cache_dir /workspace/cache \
+  --num_train_epochs 100 \
+  --eval_strategy epoch \
+  --save_strategy epoch \
+  --load_best_model_at_end \
+  --metric_for_best_model eval_ndcg@10_q_inst \
+  --greater_is_better true \
+  --dev_dataset_path deu05232/followtable_WQT_dev \
+  --dev_dataset_split dev \
+  --dont_shuffle \
+  --negatives_first_n 3' > logs/train.log 2>&1 &
+  
+
+# add_all_sample
+nohup bash -c 'deepspeed --include localhost:"0,1" --master_port "60001" train_multi_with_dev.py \
+  --deepspeed deepspeed/ds_zero3_config.json \
+  --output_dir "promptriever-llama2-7B-followtable_add_all" \
+  --model_name_or_path meta-llama/Llama-2-7b-hf \
+  --lora \
+  --lora_r 32 \
+  --lora_target_modules q_proj,k_proj,v_proj,o_proj,down_proj,up_proj,gate_proj \
+  --dataset_name "deu05232/followtable_WQT_train_add_all" \
+  --query_prefix "query: " \
+  --passage_prefix "passage: " \
+  --bf16 \
+  --pooling eos \
+  --append_eos_token \
+  --normalize \
+  --temperature 0.01 \
+  --per_device_train_batch_size 16 \
+  --gradient_checkpointing \
+  --train_group_size 16 \
+  --learning_rate 1e-4 \
+  --query_max_len 304 \
+  --passage_max_len 512 \
+  --logging_steps 10 \
+  --overwrite_output_dir \
+  --seed 42 \
+  --save_total_limit 2 \
+  --data_seed 42 \
+  --num_positives 1 \
+  --gradient_accumulation_steps 4 \
+  --dataset_cache_dir /workspace/cache \
+  --num_train_epochs 100 \
+  --eval_strategy epoch \
+  --save_strategy epoch \
+  --load_best_model_at_end \
+  --metric_for_best_model eval_ndcg@10_q_inst \
+  --greater_is_better true \
+  --dev_dataset_path deu05232/followtable_WQT_dev \
+  --dev_dataset_split dev \
+  --dont_shuffle \
+  --negatives_first_n 3' > logs/train.log 2>&1 &
+  
