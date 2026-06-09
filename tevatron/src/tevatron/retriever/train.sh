@@ -8,7 +8,7 @@ nohup bash -c 'deepspeed --include localhost:"0,1" --master_port "60001" train.p
   --lora_r 32 \
   --lora_target_modules q_proj,k_proj,v_proj,o_proj,down_proj,up_proj,gate_proj \
   --save_steps 100 \
-  --dataset_name "deu05232/repro_msmarco-w-instructions_seed42" \
+  --dataset_name "DATASET" \
   --query_prefix "query: " \
   --passage_prefix "passage: " \
   --bf16 \
@@ -44,7 +44,7 @@ nohup bash -c 'deepspeed --include localhost:"0,1" --master_port "60001" train_m
   --lora_r 32 \
   --lora_target_modules q_proj,k_proj,v_proj,o_proj,down_proj,up_proj,gate_proj \
   --save_steps 100 \
-  --dataset_name "deu05232/repro_msmarco-w-instructions_seed42-multipos" \
+  --dataset_name "DATASET" \
   --query_prefix "query: " \
   --passage_prefix "passage: " \
   --bf16 \
@@ -82,7 +82,7 @@ nohup bash -c 'deepspeed --include localhost:"0,1" --master_port "60001" train.p
   --lora_r 32 \
   --lora_target_modules q_proj,k_proj,v_proj,o_proj,down_proj,up_proj,gate_proj \
   --save_steps 100 \
-  --dataset_name "deu05232/repro_msmarco-w-instructions_seed42-multipos_random" \
+  --dataset_name "DATASET" \
   --query_prefix "query: " \
   --passage_prefix "passage: " \
   --bf16 \
@@ -116,7 +116,7 @@ nohup bash -c 'deepspeed --include localhost:"0,1" --master_port "60001" train.p
   --lora_r 32 \
   --lora_target_modules q_proj,k_proj,v_proj,o_proj,down_proj,up_proj,gate_proj \
   --save_steps 100 \
-  --dataset_name "deu05232/repro_msmarco-w-instructions-add_all_q" \
+  --dataset_name "DATASET" \
   --query_prefix "query: " \
   --passage_prefix "passage: " \
   --bf16 \

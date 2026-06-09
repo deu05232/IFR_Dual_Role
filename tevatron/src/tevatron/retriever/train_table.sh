@@ -7,7 +7,7 @@ nohup bash -c 'deepspeed --include localhost:"0,1" --master_port "60001" train_m
   --lora \
   --lora_r 32 \
   --lora_target_modules q_proj,k_proj,v_proj,o_proj,down_proj,up_proj,gate_proj \
-  --dataset_name "deu05232/followtable_WQT_train_only_q" \
+  --dataset_name "DATASET" \
   --query_prefix "query: " \
   --passage_prefix "passage: " \
   --bf16 \
@@ -35,7 +35,7 @@ nohup bash -c 'deepspeed --include localhost:"0,1" --master_port "60001" train_m
   --load_best_model_at_end \
   --metric_for_best_model eval_ndcg@10_q \
   --greater_is_better true \
-  --dev_dataset_path deu05232/followtable_WQT_dev \
+  --dev_dataset_path "DATASET" \
   --dev_dataset_split dev \
   --dont_shuffle \
   --negatives_first_n 3' > logs/train.log 2>&1 &
@@ -49,7 +49,7 @@ nohup bash -c 'deepspeed --include localhost:"0,1" --master_port "60001" train_m
   --lora \
   --lora_r 32 \
   --lora_target_modules q_proj,k_proj,v_proj,o_proj,down_proj,up_proj,gate_proj \
-  --dataset_name "deu05232/followtable_WQT_train" \
+  --dataset_name "DATASET" \
   --query_prefix "query: " \
   --passage_prefix "passage: " \
   --bf16 \
@@ -77,7 +77,7 @@ nohup bash -c 'deepspeed --include localhost:"0,1" --master_port "60001" train_m
   --load_best_model_at_end \
   --metric_for_best_model eval_ndcg@10_q_inst \
   --greater_is_better true \
-  --dev_dataset_path deu05232/followtable_WQT_dev \
+  --dev_dataset_path "DATASET" \
   --dev_dataset_split dev \
   --dont_shuffle \
   --negatives_first_n 3' > logs/train.log 2>&1 &
@@ -91,7 +91,7 @@ nohup bash -c 'deepspeed --include localhost:"0,1" --master_port "60001" train_m
   --lora \
   --lora_r 32 \
   --lora_target_modules q_proj,k_proj,v_proj,o_proj,down_proj,up_proj,gate_proj \
-  --dataset_name "deu05232/followtable_WQT_train" \
+  --dataset_name "DATASET" \
   --query_prefix "query: " \
   --passage_prefix "passage: " \
   --bf16 \
@@ -119,7 +119,7 @@ nohup bash -c 'deepspeed --include localhost:"0,1" --master_port "60001" train_m
   --load_best_model_at_end \
   --metric_for_best_model eval_ndcg@10_q_inst \
   --greater_is_better true \
-  --dev_dataset_path deu05232/followtable_WQT_dev \
+  --dev_dataset_path "DATASET" \
   --dev_dataset_split dev \
   --dont_shuffle \
   --negatives_first_n 3' > logs/train.log 2>&1 &
@@ -133,7 +133,7 @@ nohup bash -c 'deepspeed --include localhost:"0,1" --master_port "60001" train_m
   --lora \
   --lora_r 32 \
   --lora_target_modules q_proj,k_proj,v_proj,o_proj,down_proj,up_proj,gate_proj \
-  --dataset_name "deu05232/followtable_WQT_train_add_all" \
+  --dataset_name "DATASET" \
   --query_prefix "query: " \
   --passage_prefix "passage: " \
   --bf16 \
@@ -161,7 +161,7 @@ nohup bash -c 'deepspeed --include localhost:"0,1" --master_port "60001" train_m
   --load_best_model_at_end \
   --metric_for_best_model eval_ndcg@10_q_inst \
   --greater_is_better true \
-  --dev_dataset_path deu05232/followtable_WQT_dev \
+  --dev_dataset_path "DATASET" \
   --dev_dataset_split dev \
   --dont_shuffle \
   --negatives_first_n 3' > logs/train.log 2>&1 &
